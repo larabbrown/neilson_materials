@@ -1,0 +1,11 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+api.txt
+geo150_routes.Rmd
+*.rda
+*.dbf
+*.prj
+*.shp
+*.shx

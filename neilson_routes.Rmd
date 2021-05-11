@@ -1,0 +1,97 @@
+---
+title: "Neilson Material Routes"
+author: "Lara Brown"
+date: "5/10/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  echo = TRUE,
+  warning = FALSE
+)
+library(tidyverse)
+library(sf)
+library(leaflet)
+library(RColorBrewer)
+```
+
+## Introduction
+
+## Code: data wrangling
+
+### Preparing the data
+
+```{r}
+pts <- read_csv("stone_coords.csv")
+ref <- read_csv("lookup_table.csv")
+rt_info <- read_csv("route_lookup.csv")
+```
+
+
+### Openrouteservice: Route calculations
+
+```{r, eval=FALSE}
+remotes::install_github("GIScience/openrouteservice-r")
+```
+
+```{r API key, include=FALSE}
+key <- readr::read_file("api.txt")
+
+library(openrouteservice)
+ors_api_key(key)
+```
+
+```{r route func}
+# uses coordinates passed in a tibble to calculate a truck route with OpenRouteService
+generate_routes <- function(route_tibble){
+  name <- route_tibble %>% pull(stone) %>% head(1) %>% as.character()
+  route_num <- route_tibble %>% pull(route_id) %>% head(1) %>% as.character()
+  file_name <- paste(name, route_num, "_4326.rda", sep="")
+  
+  if(!file.exists(file_name)){ # check if routes have already been created and stored locally
+    route <- route_tibble %>%
+      select(lon,lat) %>%
+      ors_directions(profile = "driving-hgv", output = "sf") %>%
+      st_transform(4326)
+    
+    saveRDS(route, file_name)
+  }
+  
+  readRDS(file_name)
+}
+```
+
+```{r route calculations}
+# Creates sf object where each row is a different route
+all_routes <- pts %>%
+  filter(route_id != 41) %>%
+  left_join(ref, by=c("stone_id" = "stone_id")) %>%
+  group_by(route_id) %>%
+  group_modify(~generate_routes(.x), .keep=TRUE) %>%
+  ungroup() %>%
+  st_as_sf() %>%
+  st_set_crs(4326) %>%
+  mutate(route_len = st_length(geometry)) %>%
+  mutate(route_len = units::set_units(route_len, "miles")) %>%
+  select(route_id, geometry, route_len) %>%
+  left_join(rt_info, by = c("route_id" = "route_id"))
+
+st_write(all_routes, "material_routes.shp")
+```
+
+
+```{r leaflet chosen paths, fig.align = 'center'}
+colors <- brewer.pal(n=9, name="Set3")
+
+path2col <- colorFactor(colors, all_routes$route_id, n = 9)
+
+leaflet(all_routes, width = 600, height = 500) %>% 
+  addProviderTiles(providers$Esri.WorldTopoMap) %>%
+  addPolylines(weight = 5, 
+               popup =~ route_id,
+               color = ~path2col(route_id),
+               opacity=1)
+```
+
