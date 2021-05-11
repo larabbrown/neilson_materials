@@ -1,2 +1,3 @@
-# neilson_materials
-Data and R code for generating routes from stone quarries to Smith College's Neilson Library. Created for a course project in GEO/ENV 150, Spring 2021 semester.
+# Stones of Neilson Library
+
+This repository contains code used to generate linestrings depicting routes from nine different quarries and manufacturing sites to Neilson Library at Smith College. These routes were used in a StoryMap created for GEO/ENV 150 in the Spring 2021 semester.
