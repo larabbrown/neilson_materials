@@ -83,7 +83,7 @@ st_write(all_routes, "material_routes.shp")
 
 
 ```{r leaflet chosen paths, fig.align = 'center'}
-colors <- brewer.pal(n=9, name="Set2")
+colors <- brewer.pal(n=9, name="Set3")
 
 path2col <- colorFactor(colors, all_routes$route_id, n = 9)
 
