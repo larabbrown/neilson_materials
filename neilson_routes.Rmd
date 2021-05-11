@@ -37,8 +37,10 @@ remotes::install_github("GIScience/openrouteservice-r")
 ```
 
 ```{r API key, include=FALSE}
+key <- readr::read_file("api.txt")
+
 library(openrouteservice)
-ors_api_key("api_key")
+ors_api_key(key)
 ```
 
 ```{r route func}
