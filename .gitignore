@@ -4,8 +4,8 @@
 .Ruserdata
 api.txt
 geo150_routes.Rmd
-.rda
-.dbf
-.prj
-.shp
-.shx
+*.rda
+*.dbf
+*.prj
+*.shp
+*.shx
