@@ -1,0 +1,12 @@
+stone_id,MATERIAL,COMPANY,LATITUDE,LONGITUDE,TYPE,CITY,STATE
+1,Portland Cement,Lafarge,42.4988261988,-73.8134761400,Manufacturing,Ravena,NY
+2,Mill Blend Waterstuck Brick,Stiles & Hart,41.9403571316,-70.9422690061,Manufacturing,Bridgewater,MA
+3,Cedar Tavernelle Marble,Tennessee Marble Company,35.7710340000,-84.1134820000,Extraction,Friendsville,TN
+3,Cedar Tavernelle Marble,Tennessee Marble Company,35.7714361478,-84.1145709106,Manufacturing,Friendsville,TN
+6,Slate,Greenstone Slate,43.4888687227,-73.2347669688,,Poultney,VT
+4,Red Sandstone,,25.6498578393,102.2900102117,Extraction,ChaDianXiang,Yunnan
+5,Limestone,Bybee Stone Company,39.0944061143,-86.5833542028,Extraction,Bloomington,IN
+5,Limestone,Bybee Stone Company,39.2436813452,-86.6223827074,Manufacturing,Ellettsville,IN
+7,Granite,Stony Creek Quarry,41.2848811190,-72.7412309431,Extraction,Branford,CT
+7,Granite,Williams Stone Company,42.2337949020,-73.0694900038,Extraction,East Otis,MA
+8,Red sandstone,,41.5757084738,-72.6433973755,Extraction,Portland,CT

@@ -24,7 +24,7 @@ library(RColorBrewer)
 ### Preparing the data
 
 ```{r}
-pts <- read_csv("stone_coords.csv")
+pts <- read_csv("route_coords.csv")
 ref <- read_csv("lookup_table.csv")
 rt_info <- read_csv("route_lookup.csv")
 ```
