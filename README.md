@@ -4,4 +4,4 @@ This repository contains code used to generate linestrings depicting routes from
 
 In an idealistic attempt at reproducability in ArcGIS Pro, I've included my methodology in the [methods.md](methods.md) file. 
 
-The web map created from this data can be viewed [here](https://smithcollege.maps.arcgis.com/apps/mapviewer/index.html?webmap=82e512aeaeaf4cc6848284df97abb3cb). Story map is forthcoming!
+The web map created from this data can be viewed [here](https://smithcollege.maps.arcgis.com/apps/mapviewer/index.html?webmap=82e512aeaeaf4cc6848284df97abb3cb). The final story map including animations of the route data, histories of quarry sites, and more can be accessed [here](https://arcg.is/u4TWj0).
